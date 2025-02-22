@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.chart-container {
+  width: 1000px;
+  height: 600px;
+  margin: 0 left;
+}
