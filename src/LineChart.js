@@ -2,7 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import Papa from 'papaparse';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -18,7 +27,7 @@ const LineChart = () => {
       complete: (results) => {
         const data = results.data;
         
-        // Extract years for x-axis
+        // Extract years for the x-axis
         const years = data.map(row => row['Year']);
 
         // Define the cities and map to the respective CSV columns for CPI Change (inflation rate)
@@ -48,16 +57,35 @@ const LineChart = () => {
     });
   }, []);
 
-  // Chart options
+  // Chart options with axis titles and custom sizing enabled by disabling the default aspect ratio
   const options = {
     responsive: true,
+    maintainAspectRatio: false, // Use the dimensions provided by the container (from index.css)
     plugins: {
       legend: { position: 'top' },
       title: { display: true, text: 'Inflation Rate (CPI Change %) 2014-2024' }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Year'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'CPI Change (%)'
+        }
+      }
     }
   };
 
-  return <Line data={chartData} options={options} />;
+  return (
+    <div className="chart-container">
+      <Line data={chartData} options={options} />
+    </div>
+  );
 };
 
 export default LineChart;
