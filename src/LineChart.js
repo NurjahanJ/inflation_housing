@@ -4,51 +4,45 @@ import { Line } from 'react-chartjs-2';
 import Papa from 'papaparse';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 
-// Register necessary Chart.js components
+// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const LineChart = () => {
-  const [chartData, setChartData] = useState({
-    labels: [],
-    datasets: []
-  });
+  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
 
   useEffect(() => {
-    // Load the CSV file from the public folder
-    Papa.parse(process.env.PUBLIC_URL + '/Line_chart_data.CVS', {
+    // Load CSV file from public folder
+    Papa.parse(process.env.PUBLIC_URL + '/Line_chart_data.csv', {
       download: true,
       header: true,
       complete: (results) => {
-        // Assuming the CSV columns are:
-        // Year, Los Angeles, Phoenix, San Diego, Seattle, San Francisco
         const data = results.data;
+        
+        // Extract years for x-axis
+        const years = data.map(row => row['Year']);
 
-        // Extract the years for the x-axis
-        const years = data.map(row => row.Year);
+        // Define the cities and map to the respective CSV columns for CPI Change (inflation rate)
+        const cities = [
+          { label: "Los Angeles", key: "CPI Change (%) - Los Angeles", color: 'rgb(255, 99, 132)' },
+          { label: "Phoenix", key: "CPI Change (%) - Phoenix", color: 'rgb(54, 162, 235)' },
+          { label: "San Diego", key: "CPI Change (%) - San Diego", color: 'rgb(255, 206, 86)' },
+          { label: "Seattle", key: "CPI Change (%) - Seattle", color: 'rgb(75, 192, 192)' },
+          { label: "San Francisco", key: "CPI Change (%) - San Francisco", color: 'rgb(153, 102, 255)' },
+        ];
 
-        // Define the cities and a color for each dataset
-        const cities = ['Los Angeles', 'Phoenix', 'San Diego', 'Seattle', 'San Francisco'];
-        const colors = {
-          'Los Angeles': 'rgb(255, 99, 132)',
-          'Phoenix': 'rgb(54, 162, 235)',
-          'San Diego': 'rgb(255, 206, 86)',
-          'Seattle': 'rgb(75, 192, 192)',
-          'San Francisco': 'rgb(153, 102, 255)'
-        };
-
-        // Create a dataset for each city
+        // Create datasets for each city
         const datasets = cities.map(city => ({
-          label: city,
-          data: data.map(row => parseFloat(row[city])), // Convert string data to numbers
+          label: city.label,
+          data: data.map(row => parseFloat(row[city.key])),
           fill: false,
-          borderColor: colors[city],
-          tension: 0.1
+          borderColor: city.color,
+          tension: 0.1,
         }));
 
-        // Update chart data state
+        // Set the parsed data to the chartData state
         setChartData({
           labels: years,
-          datasets: datasets
+          datasets: datasets,
         });
       }
     });
@@ -59,7 +53,7 @@ const LineChart = () => {
     responsive: true,
     plugins: {
       legend: { position: 'top' },
-      title: { display: true, text: 'Inflation Rate (2014-2024)' }
+      title: { display: true, text: 'Inflation Rate (CPI Change %) 2014-2024' }
     }
   };
 
