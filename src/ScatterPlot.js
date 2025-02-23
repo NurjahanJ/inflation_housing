@@ -125,7 +125,7 @@ const ScatterPlot = () => {
           .style('font-size', '16px')
           .style('font-weight', 'bold') // Make title bold
           .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
-          .text('Correlation Between Inflation (CPI) & Housing Prices(HPI)');
+          .text('III. Correlation Between Inflation (CPI) & Housing Prices(HPI)');
 
         // Tooltip functionality
         const tooltip = d3.select("body").append("div")

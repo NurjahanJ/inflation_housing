@@ -102,7 +102,7 @@ const HeatMap = () => {
           .style('font-weight', 'bold')
           .style('font-family', "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
           .style('fill', 'black')
-          .text('Cities Where Housing Prices Increased Most');
+          .text('II. Cities Where Housing Prices Increased Most');
 
         // Draw rectangles for each cell
         svg.selectAll()

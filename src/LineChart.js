@@ -65,7 +65,7 @@ const LineChart = () => {
       legend: { position: 'top' },
       title: { 
         display: true, 
-        text: 'Inflation Rate (CPI Change %) 2014-2024',
+        text: 'I. Inflation Rate (CPI Change %) 2014-2024',
         color: 'black', // Set title color to black
         font: {
           family: 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace', // Set font family
