@@ -57,26 +57,44 @@ const LineChart = () => {
     });
   }, []);
 
-  // Chart options with axis titles and custom sizing enabled by disabling the default aspect ratio
+  // Chart options with axis titles, custom sizing, and styling enabled
   const options = {
     responsive: true,
     maintainAspectRatio: false, // Use the dimensions provided by the container (from index.css)
     plugins: {
       legend: { position: 'top' },
-      title: { display: true, text: 'Inflation Rate (CPI Change %) 2014-2024' }
+      title: { 
+        display: true, 
+        text: 'Inflation Rate (CPI Change %) 2014-2024',
+        color: 'black', // Set title color to black
+        font: {
+          family: 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace', // Set font family
+          size: 16 // Set font size for title
+        },
+      }
     },
     scales: {
       x: {
         title: {
           display: true,
-          text: 'Year'
-        }
+          text: 'Year',
+          color: 'black', // Set X-axis label color to black
+          font: {
+            family: 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace', // Set font family for X-axis label
+            size: 12, // Set font size for X-axis label
+          },
+        },
       },
       y: {
         title: {
           display: true,
-          text: 'CPI Change (%)'
-        }
+          text: 'CPI Change (%)',
+          color: 'black', // Set Y-axis label color to black
+          font: {
+            family: 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace', // Set font family for Y-axis label
+            size: 12, // Set font size for Y-axis label
+          },
+        },
       }
     }
   };
