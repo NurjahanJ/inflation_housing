@@ -36,3 +36,9 @@ body {
   margin: 20px left;
 }
 */
+/* Controls for ScatterPlot size */
+.scatterplot-container {
+  width: 800px;
+  height: 600px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

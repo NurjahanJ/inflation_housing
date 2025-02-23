@@ -2,6 +2,7 @@
 import React from 'react';
 import LineChart from './LineChart';
 import HeatMap from './HeatMap';
+import ScatterPlot from './ScatterPlot'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="heatmap-container">
         <HeatMap />
       </div>
+      <ScatterPlot />
     </div>
   );
 }
