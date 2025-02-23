@@ -73,7 +73,7 @@ const HeatMap = () => {
           .interpolator(d3.interpolateYlOrRd)
           .domain([minValue, maxValue]);
 
-        // X-axis (Years)
+        // Append the x-axis (Years)
         svg.append('g')
           .attr('transform', `translate(0, ${height})`)
           .call(d3.axisBottom(xScale))
@@ -86,7 +86,7 @@ const HeatMap = () => {
           .attr("dy", "0.15em")
           .attr("transform", "rotate(-45)");
 
-        // Y-axis (Cities)
+        // Append the y-axis (Cities)
         svg.append('g')
           .call(d3.axisLeft(yScale))
           .selectAll("text")
@@ -103,6 +103,70 @@ const HeatMap = () => {
           .style('font-family', "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
           .style('fill', 'black')
           .text('II. Cities Where Housing Prices Increased Most');
+
+        // Legend group (positioned under the title)
+        const legendHeight = 15;
+        const legendWidth = 200;
+        const legendX = width / 2 - legendWidth / 2;
+        const legendY = -margin.top / 2 + 25; // Adjust this value to position the legend under the title
+
+        // Define a linear gradient for the legend
+        const defs = svg.append("defs");
+        const linearGradient = defs.append("linearGradient")
+          .attr("id", "legend-gradient");
+
+        linearGradient
+          .attr("x1", "0%")
+          .attr("y1", "0%")
+          .attr("x2", "100%")
+          .attr("y2", "0%");
+
+        // Set gradient stops
+        linearGradient.append("stop")
+          .attr("offset", "0%")
+          .attr("stop-color", colorScale(minValue));
+        linearGradient.append("stop")
+          .attr("offset", "100%")
+          .attr("stop-color", colorScale(maxValue));
+
+        // Append legend rectangle using the gradient
+        svg.append("rect")
+          .attr("x", legendX)
+          .attr("y", legendY)
+          .attr("width", legendWidth)
+          .attr("height", legendHeight)
+          .style("fill", "url(#legend-gradient)")
+          .style("stroke", "black");
+
+        // Append min value label
+        svg.append("text")
+          .attr("x", legendX)
+          .attr("y", legendY + legendHeight + 15)
+          .attr("text-anchor", "start")
+          .style("font-size", "12px")
+          .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
+          .style("fill", "black")
+          .text(minValue.toFixed(2) + "%");
+
+        // Append max value label
+        svg.append("text")
+          .attr("x", legendX + legendWidth)
+          .attr("y", legendY + legendHeight + 15)
+          .attr("text-anchor", "end")
+          .style("font-size", "12px")
+          .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
+          .style("fill", "black")
+          .text(maxValue.toFixed(2) + "%");
+
+        // Optional: Legend title
+        svg.append("text")
+          .attr("x", legendX + legendWidth / 2)
+          .attr("y", legendY - 5)
+          .attr("text-anchor", "middle")
+          .style("font-size", "12px")
+          .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
+          .style("fill", "black")
+          .text("HPI Change (%)");
 
         // Draw rectangles for each cell
         svg.selectAll()
@@ -152,3 +216,4 @@ const HeatMap = () => {
 };
 
 export default HeatMap;
+
