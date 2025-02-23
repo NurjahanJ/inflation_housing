@@ -12,7 +12,13 @@ code {
     monospace;
 }
 .chart-container {
-  width: 1000px;
+  width: 600px;
+  height: 600px;
+  margin: 0 left;
+}
+
+.scatterplot-container {
+  width: 800px;
   height: 600px;
   margin: 0 left;
 }
