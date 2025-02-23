@@ -68,7 +68,7 @@ const ScatterPlot = () => {
           .attr('x', width / 2)
           .attr('y', height + margin.bottom - 10)
           .attr('text-anchor', 'middle')
-          .style('font-size', '16px', 'bold')
+          .style('font-size', '12px')
           .text('Inflation Rate (CPI Change %)');
 
         // Append y-axis to the SVG
@@ -81,7 +81,7 @@ const ScatterPlot = () => {
           .attr('x', -height / 2)
           .attr('y', -margin.left + 20)
           .attr('text-anchor', 'middle')
-          .style('font-size', '16px', 'bold')
+          .style('font-size', '12px')
           .text('Housing Price Index (HPI)');
 
         // Append chart title
@@ -89,7 +89,7 @@ const ScatterPlot = () => {
           .attr('x', width / 2)
           .attr('y', -margin.top / 2)
           .attr('text-anchor', 'middle')
-          .style('font-size', '16px', 'bold')
+          .style('font-size', '16px')
           .style('font-weight', 'bold')
           .text('Correlation Between Inflation & Housing Prices');
 
