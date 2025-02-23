@@ -8,13 +8,19 @@ body {
 
 /* Controls for LineChart size */
 .chart-container {
-  width: 700px;
+  width: 900px;
   height: 600px;
 }
 
 /* Controls for ScatterPlot size */
 .scatterplot-container {
-  width: 700px;
+  width: 900px;
   height: 600px;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.heatmap-container {
+  width: 950px;
+  height: 600px;
+  margin: 20px left;
 }
