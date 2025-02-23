@@ -127,7 +127,18 @@ const ScatterPlot = () => {
           .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
           .text('Correlation Between Inflation (CPI) & Housing Prices(HPI)');
 
-        // Plot scatter points
+        // Tooltip functionality
+        const tooltip = d3.select("body").append("div")
+          .attr("class", "tooltip")
+          .style("position", "absolute")
+          .style("visibility", "hidden")
+          .style("background", "#fff")
+          .style("border", "1px solid #ccc")
+          .style("padding", "5px")
+          .style("font-family", 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family for tooltip
+          .style("font-size", "12px");
+
+        // Plot scatter points and add hover events
         svg.selectAll('circle.data-point')
           .data(scatterData)
           .enter()
@@ -137,7 +148,18 @@ const ScatterPlot = () => {
           .attr('cy', d => yScale(d.hpi))
           .attr('r', 4)
           .attr('fill', d => colorScale(d.city))
-          .attr('opacity', 0.8);
+          .attr('opacity', 0.8)
+          .on('mouseover', function(event, d) {
+            tooltip.style("visibility", "visible")
+              .html(`City: ${d.city}<br/>Year: ${d.year}<br/>Inflation: ${d.inflation.toFixed(2)}%<br/>HPI: ${d.hpi.toFixed(2)}`);
+          })
+          .on('mousemove', function(event) {
+            tooltip.style("top", (event.pageY + 5) + "px")
+              .style("left", (event.pageX + 5) + "px");
+          })
+          .on('mouseout', function() {
+            tooltip.style("visibility", "hidden");
+          });
       });
     }
   }, []);
