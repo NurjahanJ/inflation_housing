@@ -100,7 +100,7 @@ const ScatterPlot = () => {
           .attr('y', height + margin.bottom - 10)
           .attr('text-anchor', 'middle')
           .style('font-size', '12px')
-          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
+          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace')
           .text('Inflation Rate (CPI Change %)');
 
         // Add y-axis
@@ -114,7 +114,7 @@ const ScatterPlot = () => {
           .attr('y', -margin.left + 20)
           .attr('text-anchor', 'middle')
           .style('font-size', '12px')
-          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
+          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace')
           .text('Housing Price Index (HPI)');
 
         // Chart title
@@ -123,9 +123,37 @@ const ScatterPlot = () => {
           .attr('y', -margin.top / 2)
           .attr('text-anchor', 'middle')
           .style('font-size', '16px')
-          .style('font-weight', 'bold') // Make title bold
-          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
-          .text('III. Correlation Between Inflation (CPI) & Housing Prices(HPI)');
+          .style('font-weight', 'bold')
+          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace')
+          .text('III. Correlation Between Inflation (CPI) & Housing Prices (HPI)');
+
+        // --- Legend for Scatter Plot ---
+        // Define a fixed width per legend item (adjust as needed)
+        const legendItemWidth = 100; // each legend item takes 100px
+        const legendWidth = cities.length * legendItemWidth;
+        const legendX = width / 2 - legendWidth / 2; // center the legend
+        const legendY = -margin.top / 2 + 20; // position under the title
+
+        const legend = svg.append('g')
+          .attr('class', 'legend')
+          .attr('transform', `translate(${legendX}, ${legendY})`);
+
+        cities.forEach((city, i) => {
+          const legendItem = legend.append('g')
+            .attr('transform', `translate(${i * legendItemWidth}, 0)`);
+          legendItem.append('circle')
+            .attr('cx', 0)
+            .attr('cy', 0)
+            .attr('r', 4)
+            .attr('fill', colorScale(city));
+          legendItem.append('text')
+            .attr('x', 8)
+            .attr('y', 4)
+            .style('font-size', '12px')
+            .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace')
+            .style('fill', 'black')
+            .text(city);
+        });
 
         // Tooltip functionality
         const tooltip = d3.select("body").append("div")
@@ -135,7 +163,7 @@ const ScatterPlot = () => {
           .style("background", "#fff")
           .style("border", "1px solid #ccc")
           .style("padding", "5px")
-          .style("font-family", 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family for tooltip
+          .style("font-family", 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace')
           .style("font-size", "12px");
 
         // Plot scatter points and add hover events

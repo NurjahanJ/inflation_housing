@@ -96,7 +96,7 @@ const HeatMap = () => {
         // Chart title
         svg.append('text')
           .attr('x', width / 2)
-          .attr('y', -margin.top / 2)
+          .attr('y', -margin.top / 2 - 20) // moved up by 10px
           .attr('text-anchor', 'middle')
           .style('font-size', '16px')
           .style('font-weight', 'bold')
@@ -104,11 +104,73 @@ const HeatMap = () => {
           .style('fill', 'black')
           .text('II. Cities Where Housing Prices Increased Most');
 
-        // Draw rectangles for each cell
-        svg.selectAll()
+        // Legend group (positioned under the title)
+        const legendHeight = 15;
+        const legendWidth = 200;
+        const legendX = width / 2 - legendWidth / 2;
+        const legendY = -margin.top / 2.5 - .3; // Adjust this value as needed
+
+        // Define a linear gradient for the legend
+        const defs = svg.append("defs");
+        const linearGradient = defs.append("linearGradient")
+          .attr("id", "legend-gradient")
+          .attr("x1", "0%")
+          .attr("y1", "0%")
+          .attr("x2", "100%")
+          .attr("y2", "0%");
+
+        linearGradient.append("stop")
+          .attr("offset", "0%")
+          .attr("stop-color", colorScale(minValue));
+        linearGradient.append("stop")
+          .attr("offset", "100%")
+          .attr("stop-color", colorScale(maxValue));
+
+        // Append legend rectangle using the gradient
+        svg.append("rect")
+          .attr("x", legendX)
+          .attr("y", legendY)
+          .attr("width", legendWidth)
+          .attr("height", legendHeight)
+          .style("fill", "url(#legend-gradient)")
+          .style("stroke", "black");
+
+        // Append min value label
+        svg.append("text")
+          .attr("x", legendX)
+          .attr("y", legendY + legendHeight + 15)
+          .attr("text-anchor", "start")
+          .style("font-size", "12px")
+          .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
+          .style("fill", "black")
+          .text(minValue.toFixed(2) + "%");
+
+        // Append max value label
+        svg.append("text")
+          .attr("x", legendX + legendWidth)
+          .attr("y", legendY + legendHeight + 15)
+          .attr("text-anchor", "end")
+          .style("font-size", "12px")
+          .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
+          .style("fill", "black")
+          .text(maxValue.toFixed(2) + "%");
+
+        // Optional: Legend title
+        svg.append("text")
+          .attr("x", legendX + legendWidth / 2)
+          .attr("y", legendY - 5)
+          .attr("text-anchor", "middle")
+          .style("font-size", "12px")
+          .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
+          .style("fill", "black")
+          .text("HPI Change (%)");
+
+        // Draw rectangles for each cell (assign class "cell")
+        svg.selectAll("rect.cell")
           .data(heatData, d => d.city + ':' + d.year)
           .enter()
           .append('rect')
+          .attr('class', 'cell')
           .attr('x', d => xScale(d.year))
           .attr('y', d => yScale(d.city))
           .attr('width', xScale.bandwidth())
@@ -127,7 +189,8 @@ const HeatMap = () => {
           .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
           .style("font-size", "12px");
 
-        svg.selectAll("rect")
+        // Attach tooltip events only to heatmap cells
+        svg.selectAll("rect.cell")
           .on("mouseover", function(event, d) {
             tooltip.style("visibility", "visible")
               .html(`Year: ${d.year}<br/>City: ${d.city}<br/>HPI Change: ${d.value.toFixed(2)}%`);

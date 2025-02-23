@@ -6,21 +6,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Controls for LineChart size */
 .chart-container {
-  width: 900px;
+  width: 900px; 
   height: 600px;
-}
-
-/* Controls for ScatterPlot size */
-.scatterplot-container {
-  width: 900px;
-  height: 600px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .heatmap-container {
   width: 950px;
   height: 600px;
-  margin: 20px left;
+  margin: 10px left;
+  padding-top: 1%;
+}
+
+.scatterplot-container {
+  width: 950px;
+  height: 600px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  margin: center;
 }
