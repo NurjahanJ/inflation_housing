@@ -128,15 +128,19 @@ const ScatterPlot = () => {
           .text('III. Correlation Between Inflation (CPI) & Housing Prices (HPI)');
 
         // --- Legend for Scatter Plot ---
-        // Legend group positioned under the title
+        // Define a fixed width per legend item (adjust as needed)
+        const legendItemWidth = 100; // each legend item takes 100px
+        const legendWidth = cities.length * legendItemWidth;
+        const legendX = width / 2 - legendWidth / 2; // center the legend
+        const legendY = -margin.top / 2 + 20; // position under the title
+
         const legend = svg.append('g')
           .attr('class', 'legend')
-          .attr('transform', `translate(${width / 2 - 140}, ${-margin.top / 2 + 20})`); // adjust x, y as needed
+          .attr('transform', `translate(${legendX}, ${legendY})`);
 
-        // For each city, add a legend item (circle and text)
         cities.forEach((city, i) => {
           const legendItem = legend.append('g')
-            .attr('transform', `translate(${i * 140}, 0)`);
+            .attr('transform', `translate(${i * legendItemWidth}, 0)`);
           legendItem.append('circle')
             .attr('cx', 0)
             .attr('cy', 0)
