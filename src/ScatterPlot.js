@@ -122,7 +122,7 @@ const ScatterPlot = () => {
           .attr('text-anchor', 'middle')
           .style('font-size', '16px')
           .style('font-weight', 'bold')
-          .text('Scatter Plot: Correlation Between Inflation & Housing Prices');
+          .text('Correlation Between Inflation & Housing Prices');
 
         // Plot scatter points
         svg.selectAll('circle.data-point')
