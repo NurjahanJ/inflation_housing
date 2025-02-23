@@ -7,12 +7,8 @@ import ScatterPlot from './ScatterPlot'
 function App() {
   return (
     <div className="charts-wrapper">
-      <div className="chart-container">
         <LineChart />
-      </div>
-      <div className="heatmap-container">
         <HeatMap />
-      </div>
       <ScatterPlot />
     </div>
   );

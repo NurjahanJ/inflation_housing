@@ -6,25 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Parent container for side-by-side charts */
-.charts-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around; /* Distribute space evenly */
-  align-items: flex-start;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
-  margin: 20px;
-}
-
-/* Adjust the chart container sizes for side-by-side layout */
-.chart-container,
-.heatmap-container {
-  flex: 1 1 45%;   /* Each takes roughly 45% of the available width */
-  height: 600px;   /* Keep your height as needed */
-  margin: 10px;    /* Space between charts */
-}
-
-/* Optionally, you can remove the fixed width if needed
 .chart-container {
   width: 900px; 
   height: 600px;
@@ -36,7 +17,6 @@ body {
   margin: 20px left;
 }
 
-/* Controls for ScatterPlot size */
 .scatterplot-container {
   width: 800px;
   height: 600px;
