@@ -121,7 +121,6 @@ const ScatterPlot = () => {
           .attr('y', -margin.top / 2)
           .attr('text-anchor', 'middle')
           .style('font-size', '16px')
-          .style('font-weight', 'bold')
           .text('Correlation Between Inflation (CPI) & Housing Prices(HPI)');
 
         // Plot scatter points
