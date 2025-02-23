@@ -100,6 +100,7 @@ const ScatterPlot = () => {
           .attr('y', height + margin.bottom - 10)
           .attr('text-anchor', 'middle')
           .style('font-size', '12px')
+          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
           .text('Inflation Rate (CPI Change %)');
 
         // Add y-axis
@@ -113,6 +114,7 @@ const ScatterPlot = () => {
           .attr('y', -margin.left + 20)
           .attr('text-anchor', 'middle')
           .style('font-size', '12px')
+          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
           .text('Housing Price Index (HPI)');
 
         // Chart title
@@ -121,6 +123,8 @@ const ScatterPlot = () => {
           .attr('y', -margin.top / 2)
           .attr('text-anchor', 'middle')
           .style('font-size', '16px')
+          .style('font-weight', 'bold') // Make title bold
+          .style('font-family', 'source-code-pro, Menlo, Monaco, Consolas, \'Courier New\', monospace') // Set font family
           .text('Correlation Between Inflation (CPI) & Housing Prices(HPI)');
 
         // Plot scatter points

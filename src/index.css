@@ -10,7 +10,6 @@ body {
 .chart-container {
   width: 700px;
   height: 600px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Controls for ScatterPlot size */
