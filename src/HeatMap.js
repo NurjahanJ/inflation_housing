@@ -73,7 +73,7 @@ const HeatMap = () => {
           .interpolator(d3.interpolateYlOrRd)
           .domain([minValue, maxValue]);
 
-        // Append the x-axis (Years)
+        // X-axis (Years)
         svg.append('g')
           .attr('transform', `translate(0, ${height})`)
           .call(d3.axisBottom(xScale))
@@ -86,7 +86,7 @@ const HeatMap = () => {
           .attr("dy", "0.15em")
           .attr("transform", "rotate(-45)");
 
-        // Append the y-axis (Cities)
+        // Y-axis (Cities)
         svg.append('g')
           .call(d3.axisLeft(yScale))
           .selectAll("text")
@@ -96,7 +96,7 @@ const HeatMap = () => {
         // Chart title
         svg.append('text')
           .attr('x', width / 2)
-          .attr('y', -margin.top / 2)
+          .attr('y', -margin.top / 2 - 20) // moved up by 10px
           .attr('text-anchor', 'middle')
           .style('font-size', '16px')
           .style('font-weight', 'bold')
@@ -108,20 +108,17 @@ const HeatMap = () => {
         const legendHeight = 15;
         const legendWidth = 200;
         const legendX = width / 2 - legendWidth / 2;
-        const legendY = -margin.top / 2 + 25; // Adjust this value to position the legend under the title
+        const legendY = -margin.top / 2.5 - .3; // Adjust this value as needed
 
         // Define a linear gradient for the legend
         const defs = svg.append("defs");
         const linearGradient = defs.append("linearGradient")
-          .attr("id", "legend-gradient");
-
-        linearGradient
+          .attr("id", "legend-gradient")
           .attr("x1", "0%")
           .attr("y1", "0%")
           .attr("x2", "100%")
           .attr("y2", "0%");
 
-        // Set gradient stops
         linearGradient.append("stop")
           .attr("offset", "0%")
           .attr("stop-color", colorScale(minValue));
@@ -168,11 +165,12 @@ const HeatMap = () => {
           .style("fill", "black")
           .text("HPI Change (%)");
 
-        // Draw rectangles for each cell
-        svg.selectAll()
+        // Draw rectangles for each cell (assign class "cell")
+        svg.selectAll("rect.cell")
           .data(heatData, d => d.city + ':' + d.year)
           .enter()
           .append('rect')
+          .attr('class', 'cell')
           .attr('x', d => xScale(d.year))
           .attr('y', d => yScale(d.city))
           .attr('width', xScale.bandwidth())
@@ -191,7 +189,8 @@ const HeatMap = () => {
           .style("font-family", "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace")
           .style("font-size", "12px");
 
-        svg.selectAll("rect")
+        // Attach tooltip events only to heatmap cells
+        svg.selectAll("rect.cell")
           .on("mouseover", function(event, d) {
             tooltip.style("visibility", "visible")
               .html(`Year: ${d.year}<br/>City: ${d.city}<br/>HPI Change: ${d.value.toFixed(2)}%`);
@@ -216,4 +215,3 @@ const HeatMap = () => {
 };
 
 export default HeatMap;
-
