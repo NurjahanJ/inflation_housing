@@ -59,12 +59,14 @@ body {
 .chart-container {
   flex: 1 1 500px;
   height: 600px;
+
 }
 
 .explanation {
   flex: 1 1 400px;
   font-size: 14px;
   line-height: 1.6;
+  text-align: left;
 }
 
 .dashboard-footer {
@@ -75,3 +77,39 @@ body {
   margin-top: 40px;
 }
 
+.chart-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centers content horizontally */
+  gap: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px 20px 10px; /* Decrease bottom padding to 10px to reduce vertical space */
+}
+
+/* If you want a shorter chart, lower this from 600px to something else, e.g., 500px */
+.chart-container {
+  flex: 1 1 500px;
+  height: 500px; /* or 550px, whichever you prefer */
+}
+
+/* Dots: Move them further up (and remove any bottom gap) */
+.carousel .control-dots {
+  margin-top: -20px;  /* More negative value moves them further up */
+  margin-bottom: 0;   /* Remove bottom margin */
+}
+
+/* Make the dots bigger and bolder */
+.carousel .control-dots .dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #333;
+  background-color: #333;
+  margin: 0 5px;
+  opacity: 1;
+}
+
+.carousel .control-dots .dot.selected {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
