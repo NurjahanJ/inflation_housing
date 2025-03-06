@@ -3,6 +3,7 @@ import React from 'react';
 import LineChart from './LineChart';
 import HeatMap from './HeatMap';
 import ScatterPlot from './ScatterPlot';
+import MapComponent from './MapComponent';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <li><a href="#line-chart-section">Line Chart</a></li>
           <li><a href="#heatmap-section">Heat Map</a></li>
           <li><a href="#scatter-plot-section">Scatter Plot</a></li>
+          <li><a href="#map-section">Map</a></li>
           <li><a href="#dashboard-footer">Conclusion</a></li>
         </ul>
       </nav>
@@ -60,12 +62,24 @@ function App() {
             </p>
           </div>
         </section>
+
+        <section id="map-section" className="chart-section">
+          <div className="chart-container">
+            <MapComponent />
+          </div>
+          <div className="explanation">
+            <h2>Map: U.S. Cities Overview</h2>
+            <p>
+              The map provides a geographical perspective on the housing market by displaying key U.S. cities on Google Maps. It offers context for the regional data shown in the heat map and scatter plot, enabling users to quickly locate the cities under analysis. With markers highlighting each city, users can visualize where significant housing price increases occur relative to overall inflation trends. This integration of spatial data complements the other visualizations by linking economic trends with geographic locations. Overall, the map adds an extra layer of understanding to the relationship between inflation and housing prices.
+            </p>
+          </div>
+        </section>
       </main>
 
       <footer id="dashboard-footer" className="dashboard-footer">
         <h2>Conclusion</h2>
         <p>
-          In summary, the dashboard provides a comprehensive view of the relationship between inflation and housing prices. The line chart shows a general upward trend in both inflation and housing prices over time, while the scatter plot reveals a strong positive correlation across different cities. The heat map further emphasizes regional differences by pinpointing areas with the most dramatic home price increases. Together, these visualizations indicate that, on average, as inflation increases, housing prices also tend to rise, although the extent of this impact can vary by region. This multifaceted analysis answers the essential question by confirming that higher inflation is generally associated with higher housing prices.
+          In summary, the dashboard provides a comprehensive view of the relationship between inflation and housing prices. The line chart shows a general upward trend in both inflation and housing prices over time, while the scatter plot reveals a strong positive correlation across different cities. The heat map further emphasizes regional differences by pinpointing areas with the most dramatic home price increases. The map offers additional geographic context to the data, linking the visual trends to specific locations across the U.S. Together, these visualizations confirm that, on average, rising inflation is associated with higher housing prices, though the magnitude of this effect can vary by region.
         </p>
       </footer>
     </div>
@@ -73,3 +87,4 @@ function App() {
 }
 
 export default App;
+
