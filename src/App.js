@@ -70,8 +70,8 @@ function App() {
           <div className="explanation">
             <h2>Map: U.S. Cities Overview</h2>
             <p>
-              The map provides a geographical perspective on the housing market by displaying key U.S. cities on Google Maps. It offers context for the regional data shown in the heat map and scatter plot, enabling users to quickly locate the cities under analysis. With markers highlighting each city, users can visualize where significant housing price increases occur relative to overall inflation trends. This integration of spatial data complements the other visualizations by linking economic trends with geographic locations. Overall, the map adds an extra layer of understanding to the relationship between inflation and housing prices.
-            </p>
+              The map provides a geographical perspective by marking key U.S. cities—Los Angeles, San Diego, San Francisco, Seattle, and Phoenix—with markers. It highlights Los Angeles, CA as the city with the most pronounced inflation-driven increase in housing prices, as indicated by its distinct marker. This integration of spatial data complements the other visualizations by linking economic trends to specific regions. Users can interact with the map to see details for each city, enhancing the understanding of regional variations. Overall, the map adds a valuable geographic context to the relationship between inflation and housing prices.
+          </p>
           </div>
         </section>
       </main>
@@ -79,7 +79,7 @@ function App() {
       <footer id="dashboard-footer" className="dashboard-footer">
         <h2>Conclusion</h2>
         <p>
-          In summary, the dashboard provides a comprehensive view of the relationship between inflation and housing prices. The line chart shows a general upward trend in both inflation and housing prices over time, while the scatter plot reveals a strong positive correlation across different cities. The heat map further emphasizes regional differences by pinpointing areas with the most dramatic home price increases. The map offers additional geographic context to the data, linking the visual trends to specific locations across the U.S. Together, these visualizations confirm that, on average, rising inflation is associated with higher housing prices, though the magnitude of this effect can vary by region.
+          In summary, the dashboard provides a comprehensive view of the relationship between inflation and housing prices. The line chart shows a general upward trend in both inflation and housing prices over time, while the scatter plot reveals a strong positive correlation across different cities. The heat map further emphasizes regional differences by pinpointing areas with the most dramatic home price increases. The map adds geographic context by marking key cities and highlighting Los Angeles as the most affected. Together, these visualizations confirm that, on average, rising inflation is generally associated with higher housing prices, though the extent of this effect varies by region.
         </p>
       </footer>
     </div>
@@ -87,4 +87,3 @@ function App() {
 }
 
 export default App;
-
