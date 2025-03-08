@@ -56,10 +56,21 @@ body {
   font-size: 14px;
   line-height: 1.6;
 }
-.dashboard-footer {
+.dashboard-con {
   background-color: #fff;
   padding: 20px;
   border-top: 1px solid #ddd;
   text-align: left;
   margin-top: 40px;
+}
+
+.dashboard-footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.5rem;
 }
