@@ -96,7 +96,7 @@ body {
 /* Dots: Move them further up (and remove any bottom gap) */
 .carousel .control-dots {
   margin-top: -20px;  /* More negative value moves them further up */
-  margin-bottom: 0;   /* Remove bottom margin */
+  margin-bottom: 1.5;   /* Remove bottom margin */
 }
 
 /* Make the dots bigger and bolder */
