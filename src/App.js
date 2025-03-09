@@ -31,9 +31,9 @@ function App() {
                 <LineChart />
               </div>
               <div className="explanation">
-                <h2>Line Chart: Inflation vs. Housing Prices Over Time</h2>
+                <h2>Line Chart: Inflation Over Time</h2>
                 <p>
-                  The line chart illustrates the yearly trends of both inflation—measured by changes in the Consumer Price Index (CPI)—and housing prices over the past decade. When inflation rises, housing prices tend to follow an upward trajectory, suggesting a positive relationship between the two metrics.
+                  The line chart illustrates the yearly trends of  inflation which is measured by changes in the Consumer Price Index (CPI) over the past decade.
                 </p>
               </div>
             </div>
