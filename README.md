@@ -1,3 +1,6 @@
+# Presentation 
+https://docs.google.com/presentation/d/1ribVZxSTARonfi6WzcOFpkNzVWb4j43YV0KIksNCUQQ/edit?usp=sharing
+
 # Showcasing the connection between inflation and the housing market
 
 ## Line Chart: Inflation rates across Five metropolitan cities
