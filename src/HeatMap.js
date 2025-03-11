@@ -29,7 +29,7 @@ const HeatMap = () => {
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
       // Load and parse the CSV data
-      d3.csv(process.env.PUBLIC_URL + '/HeatMap_data.csv').then(data => {
+      d3.csv('/HeatMap_data.csv').then(data => {
         // Example columns:
         // Year, HPI Change (%) - Los Angeles, HPI Change (%) - Phoenix,
         // HPI Change (%) - San Diego, HPI Change (%) - Seattle, HPI Change (%) - San Francisco
